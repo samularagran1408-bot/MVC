@@ -1,15 +1,31 @@
 spring:
-  application:
-    name: Example
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
+    url: jdbc:mysql://localhost:3306/mvc_db?useSSL=false&serverTimezone=America/Bogota&allowPublicKeyRetrieval=true
+    username: root
     password: 
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+  
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+
+server:
+  port: 8080
+  error:
+    whitelabel:
+      enabled: false
+
+logging:
+  level:
+    web: INFO
+    com.MVC.Example: DEBUG

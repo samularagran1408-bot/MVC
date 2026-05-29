@@ -1,0 +1,11 @@
+CREATE DATABASE IF NOT EXISTS mvc_db;
+USE mvc_db;
+
+CREATE TABLE IF NOT EXISTS aprendiz (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+select * from aprendiz;

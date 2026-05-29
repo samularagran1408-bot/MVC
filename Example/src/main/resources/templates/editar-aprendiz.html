@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}">Editar Aprendiz</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2em; margin-bottom: 10px; }
+        .content { padding: 30px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn-submit, .btn-cancel {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            flex: 1;
+        }
+        .btn-cancel {
+            background: #6c757d;
+            color: white;
+            flex: 1;
+        }
+        .btn-submit:hover, .btn-cancel:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 th:text="${titulo}">Editar Aprendiz</h1>
+            <p>Modifica los datos del aprendiz</p>
+        </div>
+        
+        <div class="content">
+            <form action="#" th:action="@{/aprendices/actualizar/{id}(id=${aprendiz.id})}" 
+                  th:object="${aprendiz}" 
+                  method="post">
+                
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" th:field="*{nombre}" id="nombre" required/>
+                </div>
+                
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" th:field="*{correo}" id="correo" required/>
+                </div>
+                
+                <div class="buttons">
+                    <button type="submit" class="btn-submit">Actualizar</button>
+                    <a href="/aprendices" class="btn-cancel">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
