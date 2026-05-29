@@ -7,9 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ExampleApplication {
     public static void main(String[] args) {
         SpringApplication.run(ExampleApplication.class, args);
-        System.out.println("========================================");
         System.out.println("Aplicación MVC iniciada correctamente");
         System.out.println("URL: http://localhost:8080/aprendices");
-        System.out.println("========================================");
     }
 }

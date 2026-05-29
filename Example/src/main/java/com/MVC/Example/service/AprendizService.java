@@ -17,9 +17,11 @@ public class AprendizService {
     public List<Aprendiz> obtenerTodos() {
         List<Aprendiz> aprendices = aprendizRepository.findAll();
         
-        // Si la base de datos está vacía, agregamos datos de ejemplo
+        /**
+         * Si la base de datos está vacía, agrega datos de ejemplo
+         */
         if (aprendices.isEmpty()) {
-            System.out.println("📝 Base de datos vacía - Agregando datos de ejemplo...");
+            System.out.println("Base de datos vacía - Agregando datos de ejemplo...");
             aprendizRepository.save(new Aprendiz("Ana García", "ana@ejemplo.com"));
             aprendizRepository.save(new Aprendiz("Luis Pérez", "luis@ejemplo.com"));
             aprendizRepository.save(new Aprendiz("Carolina Mendoza", "carolina@ejemplo.com"));

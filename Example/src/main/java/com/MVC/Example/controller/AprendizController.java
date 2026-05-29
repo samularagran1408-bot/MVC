@@ -38,12 +38,12 @@ public class AprendizController {
         }
         
         if (aprendizService.existePorCorreo(aprendiz.getCorreo())) {
-            redirectAttributes.addFlashAttribute("error", "❌ El correo ya está registrado");
+            redirectAttributes.addFlashAttribute("error", "El correo ya está registrado");
             return "redirect:/aprendices";
         }
         
         aprendizService.guardarAprendiz(aprendiz);
-        redirectAttributes.addFlashAttribute("success", "✅ Aprendiz registrado exitosamente");
+        redirectAttributes.addFlashAttribute("success", "Aprendiz registrado exitosamente");
         return "redirect:/aprendices";
     }
     
@@ -54,7 +54,7 @@ public class AprendizController {
             model.addAttribute("titulo", "Editar Aprendiz");
             return "editar-aprendiz";
         }).orElseGet(() -> {
-            redirectAttributes.addFlashAttribute("error", "❌ Aprendiz no encontrado");
+            redirectAttributes.addFlashAttribute("error", "Aprendiz no encontrado");
             return "redirect:/aprendices";
         });
     }
@@ -71,9 +71,9 @@ public class AprendizController {
         
         try {
             aprendizService.actualizarAprendiz(id, aprendiz);
-            redirectAttributes.addFlashAttribute("success", "✅ Aprendiz actualizado exitosamente");
+            redirectAttributes.addFlashAttribute("success", "Aprendiz actualizado exitosamente");
         } catch (RuntimeException e) {
-            redirectAttributes.addFlashAttribute("error", "❌ " + e.getMessage());
+            redirectAttributes.addFlashAttribute("error", "" + e.getMessage());
         }
         
         return "redirect:/aprendices";
@@ -83,9 +83,9 @@ public class AprendizController {
     public String eliminarAprendiz(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         try {
             aprendizService.eliminarAprendiz(id);
-            redirectAttributes.addFlashAttribute("success", "✅ Aprendiz eliminado exitosamente");
+            redirectAttributes.addFlashAttribute("success", "Aprendiz eliminado exitosamente");
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("error", "❌ Error al eliminar el aprendiz");
+            redirectAttributes.addFlashAttribute("error", "Error al eliminar el aprendiz");
         }
         return "redirect:/aprendices";
     }
@@ -104,10 +104,13 @@ public class AprendizController {
         return "lista-aprendices";
     }
     
-    // Endpoint de prueba
+    /**
+     * Endpoint de prueba
+     * @return
+     */
     @GetMapping("/test")
     @ResponseBody
     public String test() {
-        return "✅ Controlador funcionando correctamente!";
+        return "Controlador funcionando correctamente!";
     }
 }
